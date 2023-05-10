@@ -7,6 +7,10 @@ const recording  =fs.createWriteStream(path.join(__dirname, 'yourtext.txt'), 'ut
 stdout.write ('Привет, студент! Введите Ваш текст:')
 stdin.on('data', data => {
     const greeting = data.toString();
-    recording.write(`\nВаш введенный текст - "${greeting}"`);
+    if(greeting.trim() === 'exit'){
     process.exit();
-})
+    }
+    recording.write(data);
+});
+process.on('exit', () => stdout.write('Удачи!'));
+process.on('SIGINT', () => process.exit());

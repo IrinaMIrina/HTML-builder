@@ -9,7 +9,7 @@ fs.readdir(dirPath, {withFileTypes: false},(err, files) => {
   else {
     console.log("\nФайлы, содержащиеся в папке:");
     files.forEach(file => {
-      console.log(`${path.basename(file, path.extname(file))} - ${path.extname(file).slice(1)} -`);
+      console.log(`${path.basename(file, path.extname(file))} - ${path.extname(file).slice(1)} - kb`);
     })
   } 
 })
